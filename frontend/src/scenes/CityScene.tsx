@@ -1,6 +1,7 @@
 import Ground from '../components/Ground'
 import Building from '../components/Building'
 import { Grid, OrbitControls } from '@react-three/drei'
+import { buildings } from '../data/buildings'
 
 function CityScene() {
   return (
@@ -15,7 +16,14 @@ function CityScene() {
 
       <Ground />
 
-      <Building position={[0, 2, 0]} height={4} color="cyan" />
+      {buildings.map(building => (
+        <Building
+          key={building.id}
+          position={building.position}
+          height={building.height}
+          color={building.color}
+        />
+      ))}
     </>
   )
 }
