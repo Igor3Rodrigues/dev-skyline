@@ -1,26 +1,27 @@
-export const buildings = [
-  {
-    id: 1,
-    position: [-6, 2, 0] as [number, number, number],
-    height: 4,
-    color: '#06b6d4',
-  },
-  {
-    id: 2,
-    position: [-2, 3, 0] as [number, number, number],
-    height: 6,
-    color: '#8b5cf6',
-  },
-  {
-    id: 3,
-    position: [2, 1.5, 0] as [number, number, number],
-    height: 3,
-    color: '#f59e0b',
-  },
-  {
-    id: 4,
-    position: [6, 4, 0] as [number, number, number],
-    height: 8,
-    color: '#22c55e',
-  },
-]
+import { generateRandomGridPositions, getBuildingPosition } from '../utils/grid'
+
+type BuildingData = {
+  id: number
+  position: [number, number, number]
+  height: number
+  color: string
+}
+
+const colors = ['#06b6d4', '#8b5cf6', '#f59e0b', '#22c55e']
+
+const gridPositions = generateRandomGridPositions(20)
+
+export const buildings: BuildingData[] = gridPositions.map((gridPos, index) => {
+  const height = Math.floor(Math.random() * 10) + 3
+
+  const position = getBuildingPosition(gridPos)
+
+  position[1] = height / 2
+
+  return {
+    id: index + 1,
+    position,
+    height,
+    color: colors[index % colors.length],
+  }
+})

@@ -12,7 +12,7 @@ function CityScene() {
 
       <OrbitControls />
 
-      <Grid args={[50, 50]} />
+      <Grid args={[100, 100]} cellColor="#1d4ed8" sectionColor="#3b82f6" />
 
       <Ground />
 

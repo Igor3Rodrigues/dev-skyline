@@ -6,7 +6,7 @@ type BuildingProps = {
 
 function Building({ position, height, color }: BuildingProps) {
   return (
-    <mesh position={position} castShadow rotation={[0, Math.PI / 8, 0]}>
+    <mesh position={position} castShadow receiveShadow>
       <boxGeometry args={[2, height, 2]} />
       <meshStandardMaterial color={color} />
     </mesh>
